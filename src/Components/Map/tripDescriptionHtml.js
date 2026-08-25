@@ -1,4 +1,5 @@
 const IMG_BASE = 'https://s3.us-east-1.amazonaws.com/clementtailleur.com/img/map';
+const PHOTO_STYLE = 'width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;display:block;cursor:zoom-in';
 
 function escapeHtml (s) {
   if (s == null) return '';
@@ -29,7 +30,7 @@ export function buildTripDescriptionHtml (country, city, textDescription, journe
     html += buildCarouselHtml(carouselItems);
   } else if (carouselItems.length === 1) {
     const one = carouselItems[0];
-    html += '<div class="text-center"><img style="width:100%" src="' + IMG_BASE + '/' + one.year + '/' + one.photo + '" alt=""/></div>';
+    html += '<div class="text-center"><img class="trip-photo" style="' + PHOTO_STYLE + '" src="' + IMG_BASE + '/' + one.year + '/' + one.photo + '" alt=""/></div>';
   }
 
   const text = Array.isArray(textDescription) ? textDescription.join(' ') : textDescription;
@@ -48,7 +49,7 @@ function buildCarouselHtml (carouselItems) {
   for (let cpt = 0; cpt < carouselItems.length; cpt++) {
     const description = carouselItems[cpt];
     str += '<div class="carousel-item' + (cpt === 0 ? ' active' : '') + '">';
-    str += '<img src="' + IMG_BASE + '/' + description.year + '/' + description.photo + '" style="width:100%" alt="">';
+    str += '<img class="trip-photo" src="' + IMG_BASE + '/' + description.year + '/' + description.photo + '" style="' + PHOTO_STYLE + '" alt="">';
     str += '<div class="carousel-caption d-none d-md-block"><h5>' + description.year + '</h5></div>';
     str += '</div>';
   }

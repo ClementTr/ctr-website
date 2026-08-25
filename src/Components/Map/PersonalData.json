@@ -288,6 +288,11 @@
           "year": 2014,
           "purpose": "visit",
           "photos": ["london.jpg"]
+        },
+        {
+          "year": 2026,
+          "purpose": "visit",
+          "photos": ["united-kingdom/london1.png", "united-kingdom/london2.png"]
         }
       ]
     },
@@ -470,6 +475,11 @@
           "year": 2019,
           "purpose": "work",
           "photos": ["newyork.jpg"]
+        },
+        {
+          "year": 2026,
+          "purpose": "visit",
+          "photos": ["united-states/newyork1.png", "united-states/newyork2.png", "united-states/newyork3.png"]
         }
       ]
     },
@@ -1074,19 +1084,6 @@
       ]
     },
     {
-      "country": "United States",
-      "city": "New York - Long Island",
-      "coordinates": [40.733997064, -73.935996256],
-      "description": [""],
-      "journey": [
-        {
-          "year": 2024,
-          "purpose": "visit",
-          "photos": [""]
-        }
-      ]
-    },
-    {
       "country": "Netherlands",
       "city": "Canals, culture, and coffee shops! Explore stunning museums, enjoy delicious stroopwafels, and bike through this charming city!",
       "coordinates": [52.377956, 4.897070],
@@ -1321,6 +1318,60 @@
           "year": 2026,
           "purpose": "visit",
           "photos": ["sri-lanka/sri-lanka1.png", "sri-lanka/sri-lanka2.png", "sri-lanka/sri-lanka3.png", "sri-lanka/sri-lanka4.png", "sri-lanka/sri-lanka5.png", "sri-lanka/sri-lanka6.png", "sri-lanka/sri-lanka7.png", "sri-lanka/sri-lanka8.png", "sri-lanka/sri-lanka9.png", "sri-lanka/sri-lanka10.png"]
+        }
+      ]
+    },
+
+    {
+      "country": "Spain",
+      "city": "Bilbao",
+      "coordinates": [43.2630, -2.9350],
+      "description": [""],
+      "journey": [
+        {
+          "year": 2026,
+          "purpose": "visit",
+          "photos": ["spain/castro-urdiales1.png", "spain/castro-urdiales2.png", "spain/bilbao1.png"]
+        }
+      ]
+    },
+
+    {
+      "country": "Italy",
+      "city": "Naples",
+      "coordinates": [40.8518, 14.2681],
+      "description": [""],
+      "journey": [
+        {
+          "year": 2026,
+          "purpose": "visit",
+          "photos": ["italy/naples1.png", "italy/naples2.png", "italy/naples3.png", "italy/naples4.png", "italy/naples5.png"]
+        }
+      ]
+    },
+    {
+      "country": "Italy",
+      "city": "Caulonia Marina",
+      "coordinates": [38.386, 16.423],
+      "description": [""],
+      "journey": [
+        {
+          "year": 2026,
+          "purpose": "visit",
+          "photos": ["italy/caulonia-marina1.png"]
+        }
+      ]
+    },
+    {
+      "country": "Italy",
+      "city": "Lamezia Terme",
+      "coordinates": [38.9639, 16.3123],
+      "description": [""],
+      "journey": [
+        {
+          "year": 2026,
+          "purpose": "visit",
+          "photos": ["italy/lamezia-terme1.png"]
         }
       ]
     },

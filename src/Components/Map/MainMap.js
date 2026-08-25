@@ -25,12 +25,19 @@ export default class MainMap extends React.Component {
     this.lastCountry = null;
     this.map = null;
     this.geoJsonLayer = null;
+    this.lightboxEl = null;
+    this.lightboxImgEl = null;
   }
 
   componentDidMount () {
     const el = this.mapRef.current;
     const description = this.descriptionRef.current;
     if (!el || !description) return;
+
+    description.addEventListener('click', (e) => {
+      const img = e.target.closest('img.trip-photo');
+      if (img) this.openLightbox(img.src, img.alt);
+    });
 
     const map = (this.map = L.map(el, {
       zoomControl: false,
@@ -162,11 +169,64 @@ export default class MainMap extends React.Component {
     el.innerHTML = '';
   }
 
+  ensureLightbox () {
+    if (this.lightboxEl) return this.lightboxEl;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'photo-lightbox-overlay';
+    overlay.style.display = 'none';
+
+    const img = document.createElement('img');
+    img.className = 'photo-lightbox-img';
+    overlay.appendChild(img);
+
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'photo-lightbox-close';
+    closeBtn.setAttribute('aria-label', 'Close');
+    closeBtn.innerHTML = '&times;';
+    overlay.appendChild(closeBtn);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay || e.target === closeBtn) this.closeLightbox();
+    });
+
+    document.body.appendChild(overlay);
+    this.lightboxEl = overlay;
+    this.lightboxImgEl = img;
+    return overlay;
+  }
+
+  openLightbox (src, alt) {
+    const overlay = this.ensureLightbox();
+    this.lightboxImgEl.src = src;
+    this.lightboxImgEl.alt = alt || '';
+    overlay.style.display = 'flex';
+    document.addEventListener('keydown', this.handleLightboxKeydown);
+  }
+
+  closeLightbox = () => {
+    if (!this.lightboxEl) return;
+    this.lightboxEl.style.display = 'none';
+    this.lightboxImgEl.src = '';
+    document.removeEventListener('keydown', this.handleLightboxKeydown);
+  }
+
+  handleLightboxKeydown = (e) => {
+    if (e.key === 'Escape') this.closeLightbox();
+  }
+
   componentWillUnmount () {
     if (this.map) {
       this.clearMarkers(this.map);
       this.map.remove();
       this.map = null;
+    }
+    document.removeEventListener('keydown', this.handleLightboxKeydown);
+    if (this.lightboxEl) {
+      this.lightboxEl.remove();
+      this.lightboxEl = null;
+      this.lightboxImgEl = null;
     }
   }
 
