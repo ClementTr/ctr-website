@@ -54,16 +54,15 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
-      # Copy the files from build folder to the S3 bucket
+      # Copy the files from build folder to the S3 bucket.
+      # img/map/* is excluded from --delete: trip photos are gitignored (see
+      # .gitignore) so they never exist in this CI checkout/build, and without
+      # this exclude `--delete` would wipe every photo already on S3. Photos
+      # are deployed manually from a machine that actually has them, via
+      # `npm run deploy` (see README.md).
       - name: Deploy to S3
-        run: aws s3 sync build/ s3://clementtailleur.com --delete
-      # Sync map images if needed
-      - name: Sync map images
-        run: |
-          if [ -d "public/img/map" ]; then
-            aws s3 sync public/img/map/ s3://clementtailleur.com/img/map/
-          fi
-        
+        run: aws s3 sync build/ s3://clementtailleur.com --delete --exclude "img/map/*"
+
   clear_cache:
     runs-on: ubuntu-latest
     # When application is successfully tested and build has been generated
