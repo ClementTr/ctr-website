@@ -1,68 +1,118 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CTr Website
 
-## Available Scripts
+Site web personnel créé avec React, présentant un portfolio, une carte interactive des voyages et des informations personnelles.
 
-In the project directory, you can run:
+## 🚀 Technologies utilisées
+
+- **React** 16.10.1 (à migrer vers React 18)
+- **React Router** 5.1.1 (à migrer vers v6)
+- **Leaflet** - Cartes interactives
+- **Bootstrap** - Framework CSS
+- **AWS S3 & CloudFront** - Hébergement
+
+## 📁 Structure du projet
+
+```
+src/
+├── Components/
+│   ├── About/          # Composants "À propos"
+│   ├── Home/           # Page d'accueil et carousel
+│   ├── Map/            # Composants de carte interactive
+│   ├── HeaderComponent.js
+│   ├── MiniBioComponent.js
+│   └── NotFoundComponent.js
+├── App.js              # Composant principal avec routing
+├── index.js            # Point d'entrée de l'application
+└── utils/              # Utilitaires (logger, etc.)
+```
+
+## 🛠️ Installation
+
+```bash
+# Installer les dépendances
+npm install
+
+# Lancer en mode développement
+npm start
+```
+
+L'application sera accessible sur [http://localhost:3000](http://localhost:3000)
+
+## 📜 Scripts disponibles
 
 ### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Lance l'application en mode développement avec hot-reload.
 
 ### `npm run build`
+Construit l'application pour la production dans le dossier `build/`.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test`
+Lance les tests en mode interactif.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### `npm run deploy`
+Déploie le build sur AWS S3 (nécessite la configuration AWS CLI).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚢 Déploiement
 
-### `npm run eject`
+Le déploiement est automatisé via GitHub Actions lors d'un push sur la branche `master`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Déploiement manuel
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. **Build de l'application**
+   ```bash
+   npm run build
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. **Synchroniser avec S3**
+   ```bash
+   aws s3 sync build/ s3://clementtailleur.com --delete --profile user-clement
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. **Synchroniser les images de la carte (si nécessaire)**
+   ```bash
+   aws s3 sync public/img/map/ s3://clementtailleur.com/img/map/ --profile user-clement
+   ```
 
-## Learn More
+4. **Invalider le cache CloudFront**
+   ```bash
+   aws cloudfront create-invalidation --distribution-id E2294DXPG9HTGF --paths "/*" --profile user-clement
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Configuration CI/CD
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Le workflow GitHub Actions (`.github/workflows/main.yml`) :
+- Build automatique sur push vers `master`
+- Déploiement automatique sur S3
+- Invalidation du cache CloudFront
 
-### Code Splitting
+**Secrets GitHub requis :**
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_DEFAULT_REGION`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+**⚠️ Permissions IAM requises :**
+Consultez [AWS_PERMISSIONS.md](./AWS_PERMISSIONS.md) pour configurer les permissions nécessaires (S3 et CloudFront).
 
-### Analyzing the Bundle Size
+## 📝 Améliorations prévues
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Consultez le fichier [IMPROVEMENTS.md](./IMPROVEMENTS.md) pour la liste complète des améliorations proposées.
 
-### Making a Progressive Web App
+**Priorités :**
+- ✅ Migration vers React 18
+- ✅ Migration vers React Router v6
+- ✅ Nettoyage des console.log
+- ✅ Amélioration de l'accessibilité
+- ✅ Code splitting et lazy loading
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## 📚 Documentation
 
-### Advanced Configuration
+- [Guide de migration](./MIGRATION_GUIDE.md) - Instructions pour migrer vers les dernières versions
+- [Améliorations proposées](./IMPROVEMENTS.md) - Liste détaillée des améliorations
+- [Permissions AWS](./AWS_PERMISSIONS.md) - Configuration des permissions IAM pour le déploiement
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## 🔗 Liens utiles
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [React Documentation](https://reactjs.org/)
+- [React Router Documentation](https://reactrouter.com/)
+- [Leaflet Documentation](https://leafletjs.com/)
+- [Create React App Documentation](https://facebook.github.io/create-react-app/docs/getting-started)

@@ -3,13 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "array-unique": "^0.3.2",
     "leaflet": "^1.9.1",
-    "rc-slider": "^8.7.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-leaflet": "^2.2.1",
-    "react-load-script": "0.0.6",
     "react-router-dom": "^5.1.1",
     "react-scripts": "^5.0.1"
   },

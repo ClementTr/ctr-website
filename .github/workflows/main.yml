@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           cache: 'npm'
       - run: npm ci
       - run: npm run-script build
@@ -44,7 +44,10 @@ jobs:
     steps:
       # Download previously shared build
       - name: Get artifact
-        uses: actions/checkout@v3
+        uses: actions/download-artifact@v4
+        with:
+          name: react-github-actions-build
+          path: build
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -53,7 +56,13 @@ jobs:
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
       # Copy the files from build folder to the S3 bucket
       - name: Deploy to S3
-        run: aws s3 sync . s3://clementtailleur.com
+        run: aws s3 sync build/ s3://clementtailleur.com --delete
+      # Sync map images if needed
+      - name: Sync map images
+        run: |
+          if [ -d "public/img/map" ]; then
+            aws s3 sync public/img/map/ s3://clementtailleur.com/img/map/
+          fi
         
   clear_cache:
     runs-on: ubuntu-latest
@@ -63,7 +72,7 @@ jobs:
     steps:
       # Set the credentials from repository settings/secrets
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -1,63 +1,43 @@
-import {Link} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 function HeaderComponent (){
+  const { locale, setLocale, t } = useLanguage();
+
   return (
-    <div id="header-navbar" className="header">
-
-      <div id="pc">
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-link">About</Link>
-            </li>
-            <li className="nav-item-pic">
-              <Link to="/ctr-map" className="nav-link"><img src="/img/worldwide.svg" width="30"/></Link>
-            </li>
-          </ul>
+    <div id="header-navbar" className="header header-simple">
+      <div id="pc" className="header-inner">
+        <nav className="site-nav" aria-label={t('nav.ariaNav')}>
+          <NavLink exact to="/" className="site-nav-link" activeClassName="site-nav-link--active">
+            {t('nav.home')}
+          </NavLink>
+          <span className="site-nav-sep" aria-hidden="true">/</span>
+          <NavLink to="/ctr-map" className="site-nav-link" activeClassName="site-nav-link--active">
+            {t('nav.map')}
+          </NavLink>
         </nav>
-        <hr className="vectline" align="center" width="90%" size="3"/>
-      </div>
-
-      <div id="mobile">
-        <div className="pos-f-t">
-          <div className="collapse" id="navbarToggleExternalContent">
-            <div className="bg-light p-4">
-              <h4 className="nav-title">Menu</h4>
-
-              <div id="accordion">
-
-                <ul className="list col-a">
-                  <li>
-                    <Link to="/" className="nav-link">Home</Link>
-                  </li>
-
-                  <li>
-                    <Link to="/about" className="nav-link">About</Link>
-                  </li>
-                  <li>
-                    <Link to="/ctr-map" className="nav-link"><img src="/img/worldwide.svg" width="30"/></Link>
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-
-          <nav id="nav-mobile" className="navbar navbar-light bg-light">
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-          </nav>
+        <div className="site-lang" role="group" aria-label={t('nav.langSwitch')}>
+          <button
+            type="button"
+            className={`site-lang-btn${locale === 'en' ? ' site-lang-btn--active' : ''}`}
+            onClick={() => setLocale('en')}
+            aria-pressed={locale === 'en'}
+          >
+            {t('nav.en')}
+          </button>
+          <button
+            type="button"
+            className={`site-lang-btn${locale === 'fr' ? ' site-lang-btn--active' : ''}`}
+            onClick={() => setLocale('fr')}
+            aria-pressed={locale === 'fr'}
+          >
+            {t('nav.fr')}
+          </button>
         </div>
       </div>
-
     </div>
-
-  )
+  );
 }
 
 export default HeaderComponent;

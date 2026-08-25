@@ -2,9 +2,9 @@
 echo 'Check if changes in map images frontend'
 
 FRONTEND_DIFF=`git diff-index --name-only --relative origin/master`;
-if [[ "$FRONTEND_DIFF" == *"src/Components/Map/MapComponent.js"* ]] || [[ "$FRONTEND_DIFF" == *"src/Components/Map/PersonalData.json"* ]];
+if [[ "$FRONTEND_DIFF" == *"src/Components/Map/MainMap.js"* ]] || [[ "$FRONTEND_DIFF" == *"src/Components/Map/PersonalData.json"* ]];
 then
-  echo "You changed MapComponent.js file."
+  echo "You changed MainMap.js or map data."
   echo "Updating S3 repository.."
   aws s3 sync $(pwd)/public/img/map/ s3://clementtailleur.com/img/map/ --profile user-clement
 else

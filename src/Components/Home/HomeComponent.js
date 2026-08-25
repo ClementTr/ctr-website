@@ -1,23 +1,31 @@
-import CarouselComponent from './CarouselComponent';
-import MiniBioComponent from './../MiniBioComponent';
+import HomeDataCharts from './HomeDataCharts';
+import HomeHero from './HomeHero';
+import HomeStatsStrip from './HomeStatsStrip';
 import React from 'react';
+import { BIRTH_DATE, getAgeYears } from './homeData';
+import { PersonalData, journeyStats } from '../Map/journeyModel';
+import { workCompanyCount } from './workExperienceAggregates';
+import './home.css';
 
 function HomeComponent (){
+  const halfMarathons = PersonalData.travels.reduce(
+    (sum, t) => sum + t.journey.filter((j) => j['half-marathon'] === true).length,
+    0,
+  );
+  const age = getAgeYears(BIRTH_DATE);
+  const countriesVisited = journeyStats.allCountries.length;
+
  return (
-    <div>
-      <div id="home-section">
-       <div className="container">
-         <div className="row">
-            <div className="col-md-9">
-             <CarouselComponent/>
-            </div>
-            <div className="col-md-3">
-              <MiniBioComponent/>
-            </div>
-         </div>
-        </div>
-      </div>
-    </div>
+    <main className="home-page">
+      <HomeHero />
+      <HomeStatsStrip
+        age={age}
+        halfMarathons={halfMarathons}
+        companies={workCompanyCount}
+        countriesVisited={countriesVisited}
+      />
+      <HomeDataCharts />
+    </main>
  )
 }
 

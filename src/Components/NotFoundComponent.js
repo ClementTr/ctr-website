@@ -1,7 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 function NotFoundComponent (){
-	return <h1>404 - Sorry this page is not found</h1>
+  const { t } = useLanguage();
+  return <h1>{t('notFound')}</h1>;
 }
 
 export default NotFoundComponent;

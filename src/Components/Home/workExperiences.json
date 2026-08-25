@@ -1,0 +1,541 @@
+{
+  "meta": {
+    "schemaVersion": 3,
+    "description": "Professional experiences — companies, roles, duration, languages, modern data stack, CV metrics (ROI, time saved)",
+    "lastUpdated": "2026-04-06",
+    "notes": [
+      "Duration uses monthsApprox for rough timelines; recurring engagements omit monthsApprox.",
+      "modernDataStack.components lists normalized tool ids; raw labels preserved in summary where useful.",
+      "Each experience may include cvMetrics: { revenuePerYear, timeSavedHoursPerWeek } — numbers for future charts; null when unknown."
+    ],
+    "cvMetricsSchema": {
+      "description": "Short impact note in English for the CV table UI.",
+      "descriptionFr": "Optional French translation of description; shown when the site language is FR.",
+      "roiPercent": "Estimated return on investment as a percentage (e.g. revenue uplift, cost reduction, or efficiency gain attributed to your work). Use null if not quantified.",
+      "timeSavedHoursPerWeek": "Estimated hours per week saved for the organisation (automation, self-serve BI, etc.). Use null if not quantified."
+    },
+    "managementSchema": {
+      "managedCount": "Number of people managed directly or in a matrix setup for this experience. Use null when not applicable.",
+      "departuresCount": "Number of departures observed in the managed perimeter over the same period. Use null when not tracked."
+    }
+  },
+  "tooling": {
+    "languages": {
+      "python": {
+        "label": "Python"
+      }
+    },
+    "stackComponents": {
+      "aws": {
+        "label": "AWS",
+        "category": "cloud"
+      },
+      "gcp": {
+        "label": "GCP",
+        "category": "cloud",
+        "aliases": [
+          "bigquery",
+          "bq"
+        ]
+      },
+      "tableau": {
+        "label": "Tableau",
+        "category": "bi"
+      },
+      "metabase": {
+        "label": "Metabase",
+        "category": "bi"
+      },
+      "salesforce": {
+        "label": "Salesforce",
+        "category": "crm"
+      },
+      "shopify": {
+        "label": "Shopify",
+        "category": "commerce"
+      },
+      "databricks": {
+        "label": "Databricks",
+        "category": "lakehouse"
+      },
+      "spark": {
+        "label": "Apache Spark",
+        "category": "processing"
+      }
+    }
+  },
+  "experiences": [
+    {
+      "id": "prozone",
+      "order": 1,
+      "company": {
+        "name": "Prozone",
+        "evolution": "Now Stats Perform / Stats (branding may vary)",
+        "type": "Sportech"
+      },
+      "engagement": {
+        "kind": "internship",
+        "role": "Data Scientist intern",
+        "duration": {
+          "display": "6 months",
+          "monthsApprox": 6,
+          "isRecurring": false
+        }
+      },
+      "skills": {
+        "languages": [
+          "python"
+        ],
+        "modernDataStack": {
+          "hasStack": false,
+          "components": [],
+          "display": "—"
+        }
+      },
+      "cvMetrics": {
+        "description": "Unknown",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": null
+      }
+    },
+    {
+      "id": "octo-technology",
+      "order": 2,
+      "company": {
+        "name": "Octo Technology",
+        "type": "Consulting"
+      },
+      "engagement": {
+        "kind": "internship",
+        "role": "Data Scientist intern",
+        "duration": {
+          "display": "6 months",
+          "monthsApprox": 6,
+          "isRecurring": false
+        }
+      },
+      "skills": {
+        "languages": [
+          "python"
+        ],
+        "modernDataStack": {
+          "hasStack": false,
+          "components": [],
+          "display": "—"
+        }
+      },
+      "cvMetrics": {
+        "description": "Unknown",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": null
+      }
+    },
+    {
+      "id": "contentsquare",
+      "order": 3,
+      "company": {
+        "name": "Contentsquare",
+        "aliases": [
+          "ContentSquare"
+        ],
+        "type": "SaaS"
+      },
+      "engagement": {
+        "kind": "employee",
+        "role": "Data Scientist",
+        "duration": {
+          "display": "1 year",
+          "monthsApprox": 12,
+          "isRecurring": false
+        }
+      },
+      "skills": {
+        "languages": [
+          "python"
+        ],
+        "modernDataStack": {
+          "hasStack": true,
+          "components": [
+            "aws",
+            "tableau"
+          ],
+          "display": "AWS × Tableau"
+        }
+      },
+      "cvMetrics": {
+        "description": "Unknown",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": null
+      }
+    },
+    {
+      "id": "qare",
+      "order": 4,
+      "company": {
+        "name": "Qare",
+        "type": "Healthtech"
+      },
+      "engagement": {
+        "kind": "employee",
+        "role": "Head of Data",
+        "duration": {
+          "display": "5 years",
+          "monthsApprox": 60,
+          "isRecurring": false
+        }
+      },
+      "skills": {
+        "languages": [
+          "python"
+        ],
+        "modernDataStack": {
+          "hasStack": true,
+          "components": [
+            "aws",
+            "tableau",
+            "salesforce"
+          ],
+          "display": "AWS × Tableau × Salesforce"
+        }
+      },
+      "cvMetrics": {
+        "description": "Average yearly ROI of data teams and tools = ~70% revenue uplift (mainly conversions) and 450 hours saved per year",
+        "descriptionFr": "ROI annuel moyen des équipes data et des outils ≈ 70% de (surtout conversions) et 450 heures économisées par an",
+        "roiPercent":70,
+        "timeSavedHoursPerWeek": 450
+      },
+      "management": {
+        "managedCount": 12,
+        "departuresCount": 1
+      }
+    },
+    {
+      "id": "horse-republic",
+      "order": 5,
+      "company": {
+        "name": "Horse Republic",
+        "type": "Social network"
+      },
+      "engagement": {
+        "kind": "freelance",
+        "role": "Freelance — build modern data stack (MDS)",
+        "duration": {
+          "display": "A few weeks",
+          "monthsApprox": 1,
+          "isRecurring": false,
+          "granularity": "weeks"
+        }
+      },
+      "skills": {
+        "languages": [],
+        "modernDataStack": {
+          "hasStack": true,
+          "components": [
+            "gcp",
+            "tableau",
+            "salesforce"
+          ],
+          "display": "BigQuery × Tableau × Salesforce"
+        }
+      },
+      "cvMetrics": {
+        "description": "Mainly based on sales targeting optimization and 35 hours saved per week",
+        "descriptionFr": "Principalement sur l’optimisation du ciblage commercial et 35 heures économisées par semaine sur la partie purement data",
+        "roiPercent": 30,
+        "timeSavedHoursPerWeek": 35
+      }
+    },
+    {
+      "id": "mooncard",
+      "order": 6,
+      "company": {
+        "name": "Mooncard",
+        "type": "Fintech"
+      },
+      "engagement": {
+        "kind": "freelance",
+        "role": "Freelance — build MDS + ML algorithms",
+        "duration": {
+          "display": "6 months",
+          "monthsApprox": 6,
+          "isRecurring": false
+        }
+      },
+      "skills": {
+        "languages": [
+          "python"
+        ],
+        "modernDataStack": {
+          "hasStack": true,
+          "components": [
+            "databricks",
+            "spark",
+            "tableau"
+          ],
+          "display": "Databricks + Spark + Tableau"
+        }
+      },
+      "cvMetrics": {
+        "description": "Based on ML algorithm helping to reduce churn",
+        "descriptionFr": "Basé sur un algorithme ML contribuant à réduire le churn",
+        "roiPercent": 20,
+        "timeSavedHoursPerWeek": 105
+      }
+    },
+    {
+      "id": "synchrone",
+      "order": 7,
+      "company": {
+        "name": "Synchrone",
+        "type": "Consulting"
+      },
+      "engagement": {
+        "kind": "freelance",
+        "role": "Freelance — partner",
+        "duration": {
+          "display": "Recurring partner (no fixed end)",
+          "monthsApprox": null,
+          "isRecurring": true
+        }
+      },
+      "skills": {
+        "languages": [],
+        "modernDataStack": {
+          "hasStack": false,
+          "components": [],
+          "display": "—"
+        }
+      },
+      "cvMetrics": {
+        "description": "Unknown",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": null
+      }
+    },
+    {
+      "id": "lunii",
+      "order": 8,
+      "company": {
+        "name": "Lunii",
+        "type": "Retail"
+      },
+      "engagement": {
+        "kind": "freelance",
+        "role": "Freelance — audit",
+        "duration": {
+          "display": "2 weeks",
+          "monthsApprox": 0.5,
+          "isRecurring": false,
+          "granularity": "weeks"
+        }
+      },
+      "skills": {
+        "languages": [],
+        "modernDataStack": {
+          "hasStack": false,
+          "components": [],
+          "display": "—"
+        }
+      },
+      "cvMetrics": {
+        "description": "Unknown",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": null
+      }
+    },
+    {
+      "id": "jolimoi",
+      "order": 9,
+      "company": {
+        "name": "Jolimoi",
+        "type": "Retail"
+      },
+      "management": {
+        "managedCount": 1,
+        "departuresCount": 0
+      },
+      "engagement": {
+        "kind": "freelance",
+        "role": "Freelance — audit",
+        "duration": {
+          "display": "2 weeks",
+          "monthsApprox": 0.5,
+          "isRecurring": false,
+          "granularity": "weeks"
+        }
+      },
+      "skills": {
+        "languages": [],
+        "modernDataStack": {
+          "hasStack": false,
+          "components": [],
+          "display": "—"
+        }
+      },
+      "cvMetrics": {
+        "description": "Unknown",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": null
+      }
+    },
+    {
+      "id": "fimalac-rivaj",
+      "order": 10,
+      "company": {
+        "name": "Fimalac",
+        "evolution": "Now Rivaj",
+        "type": "Retail"
+      },
+      "management": {
+        "managedCount": 1,
+        "departuresCount": 0
+      },
+      "engagement": {
+        "kind": "freelance",
+        "role": "Freelance",
+        "duration": {
+          "display": "6 months",
+          "monthsApprox": 6,
+          "isRecurring": false
+        }
+      },
+      "skills": {
+        "languages": [],
+        "modernDataStack": {
+          "hasStack": true,
+          "components": [
+            "gcp",
+            "tableau",
+            "shopify"
+          ],
+          "display": "BigQuery + Tableau + Shopify"
+        }
+      },
+      "cvMetrics": {
+        "description": "Based on 70 hours saved per week - ROI calculation unknown",
+        "descriptionFr": "Basé sur 70 heures économisées par semaine — calcul du ROI non disponible",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": 70
+      }
+    },
+    {
+      "id": "united-heroes",
+      "order": 11,
+      "company": {
+        "name": "United Heroes",
+        "type": "Social network"
+      },
+      "engagement": {
+        "kind": "freelance",
+        "role": "Freelance",
+        "duration": {
+          "display": "5 months",
+          "monthsApprox": 5,
+          "isRecurring": false
+        }
+      },
+      "management": {
+        "managedCount": 2,
+        "departuresCount": 0
+      },
+      "skills": {
+        "languages": [],
+        "modernDataStack": {
+          "hasStack": true,
+          "components": [
+            "aws",
+            "metabase"
+          ],
+          "display": "AWS + Metabase"
+        }
+      },
+      "cvMetrics": {
+        "description": "Unknown",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": null
+      }
+    },
+    {
+      "id": "nelson",
+      "order": 12,
+      "company": {
+        "name": "Nelson",
+        "type": "SaaS"
+      },
+      "engagement": {
+        "kind": "freelance",
+        "role": "Freelance — partner",
+        "duration": {
+          "display": "Recurring partner (no fixed end)",
+          "monthsApprox": null,
+          "isRecurring": true
+        }
+      },
+      "skills": {
+        "languages": [],
+        "modernDataStack": {
+          "hasStack": true,
+          "components": [
+            "aws"
+          ],
+          "display": "AWS"
+        }
+      },
+      "management": {
+        "managedCount": 1,
+        "departuresCount": 0
+      },
+      "cvMetrics": {
+        "description": "Unknown",
+        "roiPercent": null,
+        "timeSavedHoursPerWeek": null
+      }
+    },
+    {
+      "id": "tudigo",
+      "order": 13,
+      "company": {
+        "name": "Tudigo",
+        "type": "Fintech"
+      },
+      "engagement": {
+        "kind": "employee",
+        "role": "Head of Data & AI",
+        "duration": {
+          "display": "1.5 years",
+          "monthsApprox": 18,
+          "isRecurring": false
+        }
+      },
+      "skills": {
+        "languages": [],
+        "modernDataStack": {
+          "hasStack": true,
+          "components": [
+            "gcp",
+            "metabase"
+          ],
+          "display": "BigQuery + Metabase"
+        }
+      },
+      "cvMetrics": {
+        "description": "Split-optimizing the pipeline: 20% through sales targeting and CRO, and 40% by enabling data-backed strategic pivots. Self BI and analytics tools adoption helped to reduce 105 hours per week.",
+        "descriptionFr": "Optimisation du pipeline : 20% via ciblage commercial et CRO, 40% en permettant des pivots stratégiques guidés par la donnée. L’adoption de la BI et de la self-BI a contribué à gagner 105 heures par semaine.",
+        "roiPercent": 60,
+        "timeSavedHoursPerWeek": 105
+      },
+      "management": {
+        "managedCount": 3,
+        "departuresCount": 0
+      }
+    }
+  ],
+  "aggregatesHint": {
+    "engagementKinds": [
+      "internship",
+      "employee",
+      "freelance"
+    ],
+    "comment": "Company count and charts are computed in workExperienceAggregates.js from experiences[]"
+  }
+}

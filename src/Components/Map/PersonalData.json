@@ -625,7 +625,8 @@
         {
           "year": 2019,
           "purpose": "visit",
-          "photos": ["stockholm.jpg", "stockholm1.jpg", "stockholm2.jpg", "stockholm3.jpg"]
+          "photos": ["stockholm.jpg", "stockholm1.jpg", "stockholm2.jpg", "stockholm3.jpg"],
+          "half-marathon": true
         }
       ]
     },
@@ -885,7 +886,8 @@
         {
           "year": 2022,
           "purpose": "visit",
-          "photos": ["denmark/copenhagen1.png", "denmark/copenhagen2.png"]
+          "photos": ["denmark/copenhagen1.png", "denmark/copenhagen2.png"],
+          "half-marathon": true
         }
       ]
     },
@@ -1198,7 +1200,8 @@
         {
           "year": 2024,
           "purpose": "visit",
-          "photos": [""]
+          "photos": [""],
+          "half-marathon": true
         }
       ]
     },
@@ -1294,10 +1297,37 @@
         }
       ]
     },
+    {
+      "country": "Slovenia",
+      "city": "Ljubljana / Bled / Piran",
+      "coordinates": [46.056946, 14.505751],
+      "description": [""],
+      "journey": [
+        {
+          "year": 2025,
+          "purpose": "visit",
+          "photos": ["slovenia/bled.png", "slovenia/bled2.png", "slovenia/ljubljana.png", "slovenia/piran.png", "slovenia/piran2.png"],
+          "half-marathon": true
+        }
+      ]
+    },
+    {
+      "country": "Sri Lanka",
+      "city": "Colombo / Negombo / Sigiriya / Dambulla / Kandy / Ella Yala / Tangalle / Hiriketiya / Mirissa / Weligama / Unawatuna / Galle",
+      "coordinates": [7.8774222, 80.7003428],
+      "description": [""],
+      "journey": [
+        {
+          "year": 2026,
+          "purpose": "visit",
+          "photos": ["sri-lanka/sri-lanka1.png", "sri-lanka/sri-lanka2.png", "sri-lanka/sri-lanka3.png", "sri-lanka/sri-lanka4.png", "sri-lanka/sri-lanka5.png", "sri-lanka/sri-lanka6.png", "sri-lanka/sri-lanka7.png", "sri-lanka/sri-lanka8.png", "sri-lanka/sri-lanka9.png", "sri-lanka/sri-lanka10.png"]
+        }
+      ]
+    },
 
     {
       "country": "France",
-      "city": "Arcachon",
+      "city": "Bordeaux / Bassin d'Arcachon",
       "coordinates": [44.6539428, -1.1755714],
       "description": [""],
       "journey": [
@@ -1317,7 +1347,8 @@
         {
           "year": "-",
           "purpose": "work",
-          "photos": ["paris.jpg"]
+          "photos": ["paris.jpg"],
+          "half-marathon": true
         }
         
       ]
