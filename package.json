@@ -13,6 +13,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "deploy": "aws --profile user-clement s3 sync build/ s3://clementtailleur.com",
+    "cache": "aws --profile user-clement cloudfront create-invalidation --distribution-id E2294DXPG9HTGF --paths '/*'",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
